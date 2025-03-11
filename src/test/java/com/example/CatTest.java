@@ -18,17 +18,18 @@ class CatTest {
     }
 
     @Test
-    void getCustomSound() {
-        Cat cat = Mockito.mock(Cat.class);
-        when(cat.getSound()).thenReturn("МяуМяу");
-        assertEquals("МяуМяу", cat.getSound());
-    }
-
-    @Test
     void getFood() throws Exception {
         Feline feline = new Feline();
         Cat cat = new Cat(feline);
         assertEquals(List.of("Животные", "Птицы", "Рыба"), cat.getFood());
+    }
+
+    @Test
+    void getCustomFood() throws Exception {
+        Feline feline = Mockito.mock(Feline.class);
+        when(feline.eatMeat()).thenReturn(List.of("Кафетки", "Пичушки"));
+        Cat cat = new Cat(feline);
+        assertEquals(List.of("Кафетки", "Пичушки"), cat.getFood());
     }
 
 }
